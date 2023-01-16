@@ -24,6 +24,6 @@ public class User {
     private Long id;
 
     public UserResponse getUserResponse() {
-        return new UserResponse(this.username, this.email);
+        return new UserResponse(this.id,this.username, this.email);
     }
 }
