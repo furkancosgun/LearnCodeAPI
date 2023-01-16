@@ -23,7 +23,4 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    public UserResponse getUserResponse() {
-        return new UserResponse(this.id,this.username, this.email);
-    }
 }
