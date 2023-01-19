@@ -3,10 +3,10 @@ package com.furkancosgun.LearnCode.Controller;
 
 import com.furkancosgun.LearnCode.Model.Code;
 import com.furkancosgun.LearnCode.Util.CodeCompileUtil;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class CodeController {
 
     @PostMapping("api/compile")
-    public @ResponseBody Code compile(@RequestBody Code code) throws IOException {
+    public ResponseEntity<?> compile(@RequestBody Code code) throws IOException {
 
         File file = switch (code.getLanguage()) {
             case "javascript" -> new File("main.js");
@@ -53,7 +53,7 @@ public class CodeController {
 
         }
         file.delete();
-        return new Code(code.getLanguage(), output);
+        return ResponseEntity.ok(new Code(code.getLanguage(), output));
     }
 }
 
