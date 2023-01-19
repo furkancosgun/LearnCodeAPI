@@ -12,7 +12,11 @@ import lombok.NoArgsConstructor;
 public class Lesson {
     String title;
     String subTitle;
+
+    @Column(length = 999999999)
     String content;
+
+    
     String language;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
