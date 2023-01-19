@@ -16,7 +16,7 @@ import java.io.IOException;
 @Controller
 public class CodeController {
 
-    @PostMapping("/compile")
+    @PostMapping("api/compile")
     public @ResponseBody Code compile(@RequestBody Code code) throws IOException {
 
         File file = switch (code.getLanguage()) {
